@@ -11,28 +11,6 @@ Descreption: Stopwatch using JQuery -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HW6 - JQuery</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        body {
-            background-color: black;
-            color: white;
-        }
-
-        .wrapper {
-            text-align: center;
-            margin-top: 50px;
-        }
-        
-        .timer-background {
-            background-color: darkgray;
-            padding: 5px;
-            border-radius: 10px;
-            font-size: 2em;
-            display: inline-block;
-            margin-bottom: 20px;
-            opacity: 1.0;
-        }
-        
-    </style>
     <script>
         $(function () {
             var seconds = "00";
@@ -46,10 +24,29 @@ Descreption: Stopwatch using JQuery -->
             var interval;
             var animationInterval;
 
-            $buttonStart.addClass("button-class");
-            $buttonStop.addClass("button-class");
-            $buttonReset.addClass("button-class");
+            $("body").css({
+                "background-color": "black",
+                "color": "white",
+                "margin": "0",
+                "font-family": "Arial"
+            });
 
+            $(".wrapper").css({
+                "text-align": "center",
+                "margin-top": "50px"
+            });
+
+            $("p").attr("id", "timer").css({
+                "background-color": "darkgray",
+                "padding": "5px",
+                "border-radius": "10px",
+                "font-size": "25px",
+                "display": "inline-block",
+                "margin-bottom": "20px",
+                "opacity": "1.0"
+            });
+
+            // Button styles
             $(".button-class").css({
                 "padding": "10px 20px",
                 "font-size": "25px",
@@ -59,8 +56,6 @@ Descreption: Stopwatch using JQuery -->
                 "border": "none",
                 "border-radius": "5px",
             });
-
-            $("p").attr("id", "timer").addClass("timer-background");
 
             $buttonStart.click(function () {
                 clearInterval(interval);
@@ -83,7 +78,7 @@ Descreption: Stopwatch using JQuery -->
                 $appendTens.text(tens);
                 $appendSeconds.text(seconds);
                 $("p").css({"background-color": "gray", "color": "white"});
-                stopAnimation(); 
+                stopAnimation();
             });
 
             function startTimer() {
@@ -128,9 +123,9 @@ Descreption: Stopwatch using JQuery -->
         <h1>Stopwatch</h1>
         <h2>JQuery Stopwatch</h2>
         <p><span id="seconds">00</span>:<span id="tens">00</span></p>
-        <button id="button-start">Start</button>
-        <button id="button-stop">Stop</button>
-        <button id="button-reset">Reset</button>
+        <button id="button-start" class="button-class">Start</button>
+        <button id="button-stop" class="button-class">Stop</button>
+        <button id="button-reset" class="button-class">Reset</button>
     </div>
 </body>
 

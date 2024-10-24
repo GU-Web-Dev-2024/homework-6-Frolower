@@ -56,10 +56,12 @@ Descreption: Stopwatch using JQuery -->
             $buttonStart.click(function () {
                 clearInterval(interval);
                 interval = setInterval(startTimer, 10);
+                $("p").css({"background-color": "white", "color": "black"});
             });
 
             $buttonStop.click(function () {
                 clearInterval(interval);
+                $("p").css({"background-color": "gray", "color": "black"});
             });
 
             $buttonReset.click(function () {
@@ -68,6 +70,7 @@ Descreption: Stopwatch using JQuery -->
                 seconds = "00";
                 $appendTens.text(tens);
                 $appendSeconds.text(seconds);
+                $("p").css({"background-color": "darkgray", "color": "white"});
             });
 
             function startTimer() {
@@ -100,7 +103,7 @@ Descreption: Stopwatch using JQuery -->
 <body>
     <div class="wrapper">
         <h1>Stopwatch</h1>
-        <h2>Vanilla JavaScript Stopwatch</h2>
+        <h2>JQuery Stopwatch</h2>
         <p><span id="seconds">00</span>:<span id="tens">00</span></p>
         <button id="button-start">Start</button>
         <button id="button-stop">Stop</button>

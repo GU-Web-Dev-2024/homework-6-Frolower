@@ -29,6 +29,7 @@ Descreption: Stopwatch using JQuery -->
             font-size: 2em;
             display: inline-block;
             margin-bottom: 20px;
+            opacity: 1.0;
         }
         
     </style>
@@ -43,6 +44,7 @@ Descreption: Stopwatch using JQuery -->
             var $buttonStop = $('#button-stop');
             var $buttonReset = $('#button-reset');
             var interval;
+            var animationInterval;
 
             $buttonStart.addClass("button-class");
             $buttonStop.addClass("button-class");
@@ -56,20 +58,22 @@ Descreption: Stopwatch using JQuery -->
                 "background-color": "darkgray",
                 "border": "none",
                 "border-radius": "5px",
-                "cursor": "pointer"
             });
 
             $("p").attr("id", "timer").addClass("timer-background");
 
             $buttonStart.click(function () {
                 clearInterval(interval);
+                clearInterval(animationInterval);
+                startAnimation();
                 interval = setInterval(startTimer, 10);
-                $("p").css({"background-color": "white", "color": "black"});
+                $("p").css({"background-color": "gray", "color": "white", "opacity": "1.0"});
             });
 
             $buttonStop.click(function () {
                 clearInterval(interval);
-                $("p").css({"background-color": "gray", "color": "black"});
+                $("p").css({"background-color": "darkgray", "color": "black"});
+                stopAnimation();
             });
 
             $buttonReset.click(function () {
@@ -78,7 +82,8 @@ Descreption: Stopwatch using JQuery -->
                 seconds = "00";
                 $appendTens.text(tens);
                 $appendSeconds.text(seconds);
-                $("p").css({"background-color": "darkgray", "color": "white"});
+                $("p").css({"background-color": "gray", "color": "white"});
+                stopAnimation(); 
             });
 
             function startTimer() {
@@ -93,7 +98,6 @@ Descreption: Stopwatch using JQuery -->
                 }
 
                 if (tens > 99) {
-                    console.log("seconds");
                     seconds++;
                     $appendSeconds.text("0" + seconds);
                     tens = 0;
@@ -103,6 +107,17 @@ Descreption: Stopwatch using JQuery -->
                 if (seconds > 9) {
                     $appendSeconds.text(seconds);
                 }
+            }
+
+            function startAnimation() {
+                animationInterval = setInterval(function () {
+                    $("#timer").animate({ opacity: 0.8 }, 500).animate({ opacity: 1.0 }, 500);
+                }, 1000);
+            }
+
+            function stopAnimation() {
+                clearInterval(animationInterval);
+                $("#timer").stop(true, true).css({ opacity: 1.0 });
             }
         });
     </script>

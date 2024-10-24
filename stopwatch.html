@@ -11,6 +11,34 @@ Descreption: Stopwatch using JQuery -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HW6 - JQuery</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+
+        .wrapper {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .timer-background {
+            background-color: darkgray;
+            padding: 5px;
+            border-radius: 10px;
+            font-size: 2em;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 25px;
+            margin: 5px;
+            color: white;
+            background-color: darkgray;
+        }
+    </style>
     <script>
         $(function () {
             var seconds = "00";
@@ -22,6 +50,8 @@ Descreption: Stopwatch using JQuery -->
             var $buttonStop = $('#button-stop');
             var $buttonReset = $('#button-reset');
             var interval;
+
+            $("p").attr("id", "timer").addClass("timer-background");
 
             $buttonStart.click(function () {
                 clearInterval(interval);
